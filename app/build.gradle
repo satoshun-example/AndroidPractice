@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.github.satoshun.androidmypractice"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    rootProject.ext.libs.each { compile it }
+    rootProject.ext.provides.each { annotationProcessor it }
+    rootProject.ext.processors.each { annotationProcessor it }
+    rootProject.ext.testLibs.each { testCompile it }
+    rootProject.ext.androidTestLibs.each {
+        androidTestCompile (it, {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+    }
+}
