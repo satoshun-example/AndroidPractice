@@ -30,6 +30,9 @@ android {
   dataBinding {
     enabled = false
   }
+  packagingOptions {
+    exclude 'META-INF/rxjava.properties'
+  }
 }
 
 dependencies {
