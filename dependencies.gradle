@@ -1,54 +1,61 @@
 ext {
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.0'
+  compileSdkVersion = 25
+  buildToolsVersion = '25.0.2'
 
-    minSdkVersion = 15
-    targetSdkVersion = 25
-    versionCode = 1
-    versionName = '0.0.0'
+  minSdkVersion = 15
+  targetSdkVersion = 25
+  versionCode = 1
+  versionName = '0.0.0'
 
-    appcompat = 'com.android.support:appcompat-v7:25.0.1'
-    design = 'com.android.support:design:25.0.1'
+  appcompat = 'com.android.support:appcompat-v7:25.1.0'
+  design = 'com.android.support:design:25.1.0'
+  recyclerview = 'com.android.support:recyclerview-v7:25.1.0'
 
-    retrofitVersion = '2.1.0'
-    retrofit = "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    retrofitRx = "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
-    retrofitGson = "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    retrofitSimplexml = "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"
+  retrofitVersion = '2.1.0'
+  retrofit = "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+  retrofitRx = "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
+  retrofitGson = "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+  retrofitSimplexml = "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"
 
-    okhttpVersion = '3.4.1'
-    okhttp = "com.squareup.okhttp3:okhttp:${okhttpVersion}"
-    okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+  okhttpVersion = '3.5.0'
+  okhttp = "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+  okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
 
-    picasso = 'com.squareup.picasso:picasso:2.5.1'
+  glide = 'com.github.bumptech.glide:glide:3.7.0'
 
-    gson = 'com.google.code.gson:gson:2.7'
-    simplexml = 'org.simpleframework:simple-xml:2.7.1'
-    rxJava = 'io.reactivex.rxjava2:rxjava:2.0.1'
-    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  gson = 'com.google.code.gson:gson:2.7'
+  simplexml = 'org.simpleframework:simple-xml:2.7.1'
 
-    dagger = 'com.google.dagger:dagger:2.7'
-    daggerProcessor = 'com.google.dagger:dagger-compiler:2.7'
+  rxJava = 'io.reactivex.rxjava2:rxjava:2.0.1'
+  rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  lifecycle = 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+  lifecycleAndroid = 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
 
-    autoValue = 'com.google.auto.value:auto-value:1.3'
+  dagger = 'com.google.dagger:dagger:2.8'
+  daggerProcessor = 'com.google.dagger:dagger-compiler:2.8'
 
-    javax = 'javax.annotation:jsr250-api:1.0'
+  autoValue = 'com.google.auto.value:auto-value:1.3'
 
-    libs = [
-            appcompat, design, retrofit, retrofitRx, picasso,
-            retrofitGson, gson, rxJava, rxAndroid, okhttp, okhttpLogging,
-            dagger, javax]
+  javax = 'javax.annotation:jsr250-api:1.0'
 
-    processors = [daggerProcessor, autoValue]
-    provides = [autoValue]
+  libs = [
+      appcompat, design, recyclerview,
+      retrofit, retrofitRx,
+      glide,
+      retrofitGson, gson, rxJava, rxAndroid, okhttp, okhttpLogging, lifecycle, lifecycleAndroid,
+      dagger, javax]
 
-    junit = 'junit:junit:4.12'
-    mockito = 'org.mockito:mockito-core:1.10.19'
-    truth = 'com.google.truth:truth:0.30'
+  processors = [daggerProcessor, autoValue]
+  provides = [autoValue]
 
-    testLibs = [junit, truth, mockito]
+  junit = 'junit:junit:4.12'
+  mockito = 'org.mockito:mockito-core:1.10.19'
+  truth = 'com.google.truth:truth:0.31'
 
-    expresso = 'com.android.support.test.espresso:espresso-core:2.2.2'
+  testLibs = [junit, truth, mockito]
 
-    androidTestLibs = [expresso, truth]
+  expresso = 'com.android.support.test.espresso:espresso-core:2.2.2'
+  findBugs = 'com.google.code.findbugs:jsr305:3.0.1'
+
+  androidTestLibs = [expresso, truth, findBugs]
 }
