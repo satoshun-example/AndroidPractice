@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity implements RxLifecy
     return bindUntilEvent(ActivityEvent.DESTROY);
   }
 
-  protected  <T> ObservableTransformer<T, T> bindUntilEvent(ActivityEvent event) {
+  protected <T> ObservableTransformer<T, T> bindUntilEvent(ActivityEvent event) {
     return RxLifecycle.bindUntilEvent(lifecycle, event);
   }
 }

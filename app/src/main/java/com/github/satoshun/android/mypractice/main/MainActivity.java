@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class MainActivity extends BaseActivity
 
   private MainPresenter presenter;
   private TextView titleView;
+  private Button reload;
   private ProgressBar progress;
 
   @Override
@@ -31,6 +33,7 @@ public class MainActivity extends BaseActivity
     setSupportActionBar(toolbar);
 
     titleView = (TextView) findViewById(R.id.title);
+    reload = (Button) findViewById(R.id.reload);
     progress = (ProgressBar) findViewById(R.id.progress);
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -41,6 +44,8 @@ public class MainActivity extends BaseActivity
 
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+
+    reload.setOnClickListener(v -> presenter.bind());
 
     presenter = new MainPresenter(this, this);
     presenter.bind();
@@ -82,13 +87,21 @@ public class MainActivity extends BaseActivity
     return true;
   }
 
+  @Override public void showProgress() {
+    reload.setVisibility(View.GONE);
+    progress.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideProgress() {
+    reload.setVisibility(View.VISIBLE);
+    progress.setVisibility(View.GONE);
+  }
+
   @Override public void showUser(User user) {
     titleView.setText(user.getName());
-    progress.setVisibility(View.GONE);
   }
 
   @Override public void showError(String message) {
     titleView.setText(message);
-    progress.setVisibility(View.GONE);
   }
 }

@@ -18,12 +18,21 @@ public class MainPresenter implements MainContract.Presenter {
     this.repository = new UserRepository(); // todo use dagger
   }
 
+  @Override
   public void bind() {
     repository.getUser()
+        .compose(supplier.bindRelease())
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe(s -> view.showProgress())
         .subscribe(
-            view::showUser,
-            e -> view.showError(e.getMessage()));
+            u -> {
+              view.showUser(u);
+              view.hideProgress();
+            },
+            e -> {
+              view.showError(e.getMessage());
+              view.hideProgress();
+            });
   }
 }
